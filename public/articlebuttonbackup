@@ -1,0 +1,165 @@
+export default function articleElm(categoryArticles, category) {
+    let currentPage = document.querySelector("#app").getAttribute("data-page")
+
+
+    let buttonType
+
+    let articleId
+    let articleCategory
+    let articleUrl
+    let articleImg
+    let articleTitle
+    let articleSubtitle
+
+    
+    return categoryArticles.map(article => {
+        if (currentPage === "archive") {
+            buttonType = "delete"
+    
+            articleId = article.id
+            articleCategory = article.category
+            articleUrl = article.url
+
+            articleImg = article.thumb
+            articleTitle = article.title
+            articleSubtitle = article.subtitle
+        } else {
+            buttonType = "bookmark"
+
+            articleId = article.uri
+            articleCategory = category
+            articleUrl = article.url
+
+            articleImg = article.multimedia[2].url
+            articleTitle = article.title
+            articleSubtitle = article.abstract
+        }
+
+        return `
+            <div class="articlewrapper ${buttonType}">
+                <a href="${articleUrl}" target="_blank" class="category__article" data-id="${articleId}" data-category="${articleCategory}">
+                    <img src="${articleImg}" alt="" class="category__article__img">
+                    <div class="category__article__text">
+                        <h3 class="headline category__article__text__heading">
+                            ${articleTitle}
+                        </h3>
+                        <p class="category__article__text__subheading">
+                            ${articleSubtitle}
+                        </p>
+                    </div>
+                </a>
+
+                <div class="articlewrapper__btn ${buttonType}">
+                    <span class="material-symbols-rounded articlewrapper__btn__icon icon">
+                        ${buttonType}
+                    </span>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+.articlewrapper {
+    position: relative;
+
+    border-top: solid 1px var.$mediumgrey;
+
+    pointer-events: none;
+
+
+    // &:hover .category__article {
+    //     transform: translateX(- var.$articleHeight);
+    // }
+    &.bookmark {
+        background-color: var.$green;
+    }
+    &.delete {
+        background-color: var.$red;
+    }
+
+    &__btn {
+        width: var.$articleHeight;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+
+        color: var.$white;
+
+        pointer-events: auto;
+        cursor: pointer;
+
+        &.bookmark {
+            background-color: var.$green;
+        }
+        &.delete {
+            background-color: var.$red;
+        }
+    }
+}
+
+import * as storage from "./storage.js";
+import articleStorage from "./articleStorage.js";
+
+
+export default function articleStorageButton() {
+    let articleArr = articleStorage()
+    console.log("1. articleArr", articleArr);
+
+    let articleButtons = document.querySelectorAll(".articlewrapper__btn")
+    articleButtons.forEach(btn => {
+        let btnIcon = btn.firstElementChild
+
+        let articleElm = btn.parentElement.firstElementChild
+
+        let articleId = articleElm.getAttribute("data-id")
+        let articleCategory = articleElm.getAttribute("data-category")
+        let articleUrl = articleElm.getAttribute("href")
+
+        let articleImg = articleElm.firstElementChild.getAttribute("src")
+        let articleTitle = articleElm.lastElementChild.firstElementChild.innerText
+        let articleSubtitle = articleElm.lastElementChild.lastElementChild.innerText
+
+        let articleObj = {
+            "id": articleId,
+            "category": articleCategory,
+            "url": articleUrl,
+            "thumb": articleImg,
+            "title": articleTitle,
+            "subtitle": articleSubtitle
+        }
+
+        let isStored = articleArr.some((article) => article.id === articleId)
+        let storedIndex = articleArr.findIndex((article) => article.id === articleId)
+        console.log("2. isStored", isStored);
+
+        if (isStored) {
+            btnIcon.classList.add("icon--fill")
+        }
+
+        btn.addEventListener("click", () => {
+            if (!isStored) {
+                articleArr.push(articleObj)
+                console.log("A. articleArr", articleArr);
+                storage.stringifyTo("articleStorage", articleArr)
+                console.log("A. articleStorage", articleStorage());
+
+                btnIcon.classList.add("icon--fill")
+            } else {
+                console.log("B. storedIndex", storedIndex);
+                articleArr.splice(storedIndex, 1)
+                console.log("B. articleArr", articleArr);
+                storage.stringifyTo("articleStorage", articleArr)
+                console.log("B. articleStorage", articleStorage());
+
+                btnIcon.classList.remove("icon--fill")
+            }
+        })
+    });
+}

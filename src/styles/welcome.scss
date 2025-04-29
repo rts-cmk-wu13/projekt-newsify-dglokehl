@@ -1,0 +1,210 @@
+@use './placeholders/var';
+
+
+.splash {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+
+    background-color: var.$bg-color;
+
+    transition: all 2s;
+
+    &__img {
+        width: 10.75rem;
+    }
+
+    display: none;
+}
+
+
+.slider {
+    &__heading {
+        font-size: 2rem;
+        font-weight: 900;
+        text-align: center;
+
+        margin-top: 0.5rem;
+    }
+
+    &__text {
+        color: var.$text-color;
+    
+        font-size: 1.125rem;
+        font-weight: 400;
+        text-align: center;
+    
+        padding: 0 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    &__carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        margin-top: 3rem;
+
+        .indicator {
+            width: 1rem;
+            height: 1rem;
+
+            border-radius: 100px;
+            background-color: var.$mediumgrey;
+
+            cursor: pointer;
+            transition: all 350ms;
+
+            &--current {
+                width: 4.125rem;
+                background-color: var.$green;
+            }
+        }
+    }
+
+    &__btn__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+
+        padding: 0 1.25rem;
+        margin-top: 3.25rem;
+        margin-bottom: 1.25rem;
+    }
+}
+
+
+
+.login {
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: 3.75rem;
+        margin-top: 3.25rem;
+
+        &__logo {
+            width: 5.5rem;
+        }
+
+        &__heading {
+            font-size: 2.375rem;
+            font-weight: 900;
+
+            margin-top: 0.625rem;
+        }
+
+        &__intro {
+            color: var.$text-color;
+            margin-top: 2.5rem;
+        }
+    }
+
+    &__options {
+        padding: 0 1.5rem;
+
+        &__some {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        &__divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.25rem;
+
+            color: var.$text-color;
+
+            margin: 3.5rem 0;
+
+            &__line {
+                width: 100%;
+                height: 1px;
+                background-color: var.$text-color;
+            }
+        }
+
+        &__btn {
+            font-size: 1rem;
+            font-weight: 600;
+
+            &--some {
+                border-color: var.$mediumgrey;
+                color: var.$text-color;
+            }
+        }
+    }
+
+    &__signup {
+        color: var.$text-color;
+
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+
+        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+
+        &__link {
+            color: var.$green;
+
+            cursor: pointer;
+        }
+    }
+
+
+    &__form {
+        padding: 0 1.5rem;
+
+        &__field {
+            width: 100%;
+
+            &:first-of-type {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        &__label {
+            display: inline-block;
+            color: var.$text-color;
+            padding-bottom: 0.25rem;
+        }
+
+        &__input {
+            width: 100%;
+            height: 2.875rem;
+
+            display: block;
+            
+            border-radius: 4px;
+            border: 0;
+        
+            background-color: var.$input-color;
+        
+            padding: 0.625rem 1rem;
+        }
+
+        &__options {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.25rem;
+
+            margin-top: 3.5rem;
+        }
+    }
+}

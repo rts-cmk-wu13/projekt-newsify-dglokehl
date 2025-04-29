@@ -1,0 +1,134 @@
+@use './var';
+
+
+
+.menu {
+    display: flex;
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var.$text-color;
+
+        &__text {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+
+        &--active {
+            color: var.$green;
+
+            .icon {
+                font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            }
+        }
+    }
+}
+
+
+
+.header {
+    width: 100%;
+    height: var.$headerHeight;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+
+    background-color: var.$bg-color;
+
+
+    &__heading {
+        font-size: 1.5rem;
+        font-weight: 900;
+    }
+}
+
+
+.footer {
+    &__menu {
+        width: 100%;
+        height: var.$footerHeight;
+
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99999;
+
+        background-color: var.$bg-color;
+        box-shadow: 0 -8px 16px #00000035;
+
+        padding: 0 1.5rem;
+    }
+}
+
+
+main {
+    background-color: var.$bg-color;
+
+    padding-top: calc(var.$headerHeight + 0.75rem);
+    padding-bottom: calc(var.$footerHeight + 0.75rem);
+
+
+    .search {
+        padding: 0 1.5rem;
+        padding-bottom: 1.25rem;
+    
+        .searchbar {
+            width: 100%;
+            height: 2.875rem;
+        
+            border-radius: 4px;
+            border: 0;
+        
+            background-color: var.$input-color;
+        
+            padding: 0.625rem 1rem;
+        }
+    }
+}
+
+
+#app {
+    background-color: var.$bg-color;
+}
+
+
+
+.btn {
+    width: 100%;
+    height: 3.875rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 100px;
+    border: solid 2px var.$green;
+    background-color: var.$bg-color;
+
+    color: var.$green;
+
+    font-size: 1.125rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    &--fill {
+        background-color: var.$green;
+        color: var.$white;
+    }
+}
