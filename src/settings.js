@@ -33,7 +33,7 @@ let categoriesList = categories()
 // ------ LAYOUT ------ //
 
 let categoriesElms = categoriesList.map(category => {
-    let categoryName = category.name
+    let categoryName = category.display_name
 
     return `
         <li class="settings__list__item">
@@ -83,7 +83,7 @@ document.querySelector("#app").innerHTML = `
 let categorySwitches = document.querySelectorAll(".settings__list__item__option__switch")
 categorySwitches.forEach(switchElm => {
     let switchElmCategory = switchElm.getAttribute("data-category")
-    let findElm = categoriesList.find(elm => elm.name === switchElmCategory)
+    let findElm = categoriesList.find(elm => elm.display_name === switchElmCategory)
 
     switchElm.addEventListener("change", () => {
         findElm.enabled = switchElm.checked

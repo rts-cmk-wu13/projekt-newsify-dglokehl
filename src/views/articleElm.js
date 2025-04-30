@@ -1,50 +1,24 @@
-export default function articleElm(categoryArticles, category) {
+export default function articleElm(articleArr) {
     let currentPage = document.querySelector("#app").getAttribute("data-page")
 
-
     let buttonType
+    if (currentPage === "archive") {
+        buttonType = "delete"
+    } else {
+        buttonType = "bookmark"
+    }
 
-    let articleId
-    let articleCategory
-    let articleUrl
-    let articleImg
-    let articleTitle
-    let articleSubtitle
-
-    
-    return categoryArticles.map(article => {
-        if (currentPage === "archive") {
-            buttonType = "delete"
-    
-            articleId = article.id
-            articleCategory = article.category
-            articleUrl = article.url
-
-            articleImg = article.thumb
-            articleTitle = article.title
-            articleSubtitle = article.subtitle
-        } else {
-            buttonType = "bookmark"
-
-            articleId = article.uri
-            articleCategory = category
-            articleUrl = article.url
-
-            articleImg = article.multimedia[2].url
-            articleTitle = article.title
-            articleSubtitle = article.abstract
-        }
-
+    return articleArr.map(article => {
         return `
             <div class="articlewrapper">
-                <a href="${articleUrl}" target="_blank" class="category__article" data-id="${articleId}" data-category="${articleCategory}">
-                    <img src="${articleImg}" alt="" class="category__article__img">
+                <a href="${article.url}" target="_blank" class="category__article" data-id="${article.id}" data-category="${article.category}">
+                    <img src="${article.thumb}" alt="" class="category__article__img">
                     <div class="category__article__text">
                         <h3 class="headline category__article__text__heading">
-                            ${articleTitle}
+                            ${article.title}
                         </h3>
                         <p class="category__article__text__subheading">
-                            ${articleSubtitle}
+                            ${article.abstract}
                         </p>
                     </div>
                 </a>

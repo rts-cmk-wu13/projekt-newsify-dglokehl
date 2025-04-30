@@ -42,22 +42,27 @@ listLayout();
 // ------ FETCH ------ //
 
 function newsFetch() {
-    console.log(categoriesList);
     let articleArr = articleStorage()
-    console.log("articleArr", articleArr);
+    // console.log("articleArr", articleArr);
 
     const contentElm = document.querySelector(".content");
     contentElm.innerHTML += categoriesList.map(category => {
-        let categoryName = category.name;
+        if (category.enabled) {
+            let categoryName = category.display_name;
 
-        let isStored = articleArr.some((article) => article.category === categoryName)
-        console.log(categoryName, isStored);
-        if (category.enabled || isStored) {
-            let categoryArticles = articleArr.filter((article) =>
-                article.category === categoryName);
-
-            return categoryElms(categoryName, categoryArticles);
+            let isStored = articleArr.some((article) =>
+                article.category === categoryName)
+            // console.log(categoryName, isStored);
+            if (isStored) {
+                // console.log(categoryName);
+                
+                let categoryArticles = articleArr.filter((article) =>
+                    article.category === categoryName);
+    
+                return categoryElms(categoryName, categoryArticles);
+            }
         }
+        
     }).join("");
 
     categoryExpandCollapse()

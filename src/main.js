@@ -40,7 +40,7 @@ listLayout()
 // ------ FETCH ------ //
 
 function newsFetch() {
-    let fetchUrl = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apiKey}`
+    let fetchUrl = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`
 
     const fetchOptions = {
         method: 'GET',
@@ -59,13 +59,32 @@ function newsFetch() {
             const contentElm = document.querySelector(".content");
             contentElm.innerHTML += categoriesList.map(category => {
                 if (category.enabled) {
-                    let categoryName = category.name
+                    let categoryName = category.display_name
 
                     let categoryArticles = fetchResults.filter((article) =>
                         article.section === categoryName || article.subsection === categoryName);
-                    // console.log(categoryName, categoryArticles);
+                    let newsArticles = categoryArticles.filter((article) => 
+                        article.material_type_facet === "News")
 
-                    return categoryElms(categoryName, categoryArticles)
+                    if (newsArticles.length >= 1) {
+                        let articleObjArr = []
+                        newsArticles.map(article => {
+                            let articleObj = {
+                                "id": article.uri,
+                                "url": article.url,
+                                "thumb": article.multimedia[0].url,
+                                "title": article.title,
+                                "abstract": article.abstract,
+                                "category": categoryName,
+                            }
+                            articleObjArr.push(articleObj)
+                        }).join("")
+                        // console.log(articleObjArr);
+                        
+
+                        return categoryElms(categoryName, articleObjArr)
+                    }
+                    
                 }
             }).join("")
 
