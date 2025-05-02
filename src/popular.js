@@ -40,7 +40,7 @@ listLayout()
 // ------ FETCH ------ //
 
 function newsFetch() {
-    let fetchUrl = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`
+    let fetchUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=${apiKey}`
 
     const fetchOptions = {
         method: 'GET',
@@ -64,10 +64,9 @@ function newsFetch() {
                     let categoryArticles = fetchResults.filter((article) =>
                         article.section === categoryName || article.subsection === categoryName);
                     let newsArticles = categoryArticles.filter((article) => 
-                        article.material_type_facet === "News"
-                        && article.uri.length > 0
+                        article.uri.length > 0
                         && article.url.length > 0
-                        && article.multimedia.length > 0
+                        && article.media.length > 0
                         && article.title.length > 0
                         && article.abstract.length > 0
                     )
@@ -78,7 +77,7 @@ function newsFetch() {
                             let articleObj = {
                                 "id": article.uri,
                                 "url": article.url,
-                                "thumb": article.multimedia[0].url,
+                                "thumb": article.media[0]["media-metadata"][0].url,
                                 "title": article.title,
                                 "abstract": article.abstract,
                                 "category": categoryName,

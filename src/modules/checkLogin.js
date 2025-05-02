@@ -1,4 +1,5 @@
 import * as storage from "./storage.js";
+import { newsifyUrl } from "./variables.js";
 
 
 export default function checkLogin() {
@@ -6,13 +7,14 @@ export default function checkLogin() {
 
     let currentPage = document.querySelector("#app").getAttribute("data-page")
 
-    if (currentPage === "welcome") {
+
+    if (currentPage === "welcome" || currentPage === "login") {
         if (isLoggedIn) {
-            window.location.pathname = "";
+            window.location.href = newsifyUrl
         }
     } else {
         if (!isLoggedIn) {
-            // window.location.pathname = "/welcome.html";
+            window.location.href = newsifyUrl + "/welcome.html";
         }
     }
 }

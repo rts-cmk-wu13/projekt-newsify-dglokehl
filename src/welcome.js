@@ -13,6 +13,9 @@ import checkLogin from "./modules/checkLogin.js";
 import { apiKey } from "./modules/variables.js";
 
 
+import gallerySwipe from "./modules/gallerySwipe.js";
+
+
 
 // ------ INIT ------ //
 
@@ -26,9 +29,6 @@ checkDarkmode()
 // ------ SLIDER LAYOUT ------ //
 
 function sliderLayout() {
-    let index = 0
-
-
     let imgDarkLight
     if (checkDarkmode()) {
         imgDarkLight = "-dark"
@@ -57,71 +57,51 @@ function sliderLayout() {
 
     document.querySelector("#app").innerHTML = `
         <div class="splash">
-            <img src="public/newsify_logo.svg" alt="" class="splash__img">
-            <span class="splash__text headline">Newsify</span>
+            <div class="splash__logo">
+                <img src="public/newsify_logo.svg" alt="" class="splash__img">
+                <span class="splash__heading headline">Newsify</span>
+            </div>
         </div>
 
-        <figure class="slider__gallery">
-            <img src="${gallerySlides[index].img}" alt="" class="slider__gallery__img">
-        </figure>
+        <div class="slider">
+            <figure class="slider__gallery">
+                <img src="${gallerySlides[0].img}" alt="" class="slider__gallery__img">
+            </figure>
 
-        <h1 class="slider__heading headline">${gallerySlides[index].heading}</h1>
-        <p class="slider__text">${gallerySlides[index].text}</p>
+            <h1 class="slider__heading headline">${gallerySlides[0].heading}</h1>
+            <p class="slider__text">${gallerySlides[0].text}</p>
 
-        <div class="slider__carousel">
-            <span class="indicator indicator--current"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-        </div>
+            <div class="slider__carousel">
+                <span class="indicator indicator--current"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
 
-        <div class="slider__btn__wrapper">
-            <a href="login.html" class="slider__btn slider__btn--skip btn">
-                Skip
-            </a>
-            <span class="slider__btn slider__btn--continue btn btn--fill">
-                Continue
-            </span>
+            <div class="slider__btn__wrapper">
+                <a href="login.html" class="slider__btn slider__btn--skip btn">
+                    Skip
+                </a>
+                <span class="slider__btn slider__btn--continue btn btn--fill">
+                    Continue
+                </span>
+            </div>
         </div>
     `
 
-
-    let sliderImg = document.querySelector(".slider__gallery__img")
-    let sliderHeading = document.querySelector(".slider__heading")
-    let sliderText = document.querySelector(".slider__text")
-
-
-
-    let indicatorBtns = Array.from(document.querySelectorAll(".indicator"))
-    indicatorBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            index = indicatorBtns.indexOf(btn)
-            galleryChange()
-        })
-    });
-
-
-    let continueBtn = document.querySelector(".slider__btn--continue")
-    continueBtn.addEventListener("click", () => {
-        if (index < gallerySlides.length - 1) {
-            index++
-            galleryChange()
-        } else {
-            window.location.pathname = "/login.html";
-        }
-    })
+    setTimeout(() => {
+        document.querySelector(".splash").style.display = "none"
+    }, 1200)
 
 
 
-    function galleryChange() {
-        sliderImg.setAttribute("src", gallerySlides[index].img)
-        sliderHeading.innerHTML = gallerySlides[index].heading
-        sliderText.innerHTML = gallerySlides[index].text
-
-        indicatorBtns.forEach(btn => {
-            btn.classList.remove("indicator--current")
-        });
-        indicatorBtns[index].classList.add("indicator--current")
+    let sliderObj = {
+        "elm": document.querySelector(".slider"),
+        "img": document.querySelector(".slider__gallery__img"),
+        "heading": document.querySelector(".slider__heading"),
+        "text": document.querySelector(".slider__text"),
     }
+
+    gallerySwipe(gallerySlides, sliderObj)
 }
 
 

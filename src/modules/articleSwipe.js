@@ -9,11 +9,11 @@ export default function articleSwipe() {
     let movedX
 
 
+    let currentPage = document.querySelector("#app").getAttribute("data-page")
+
     let articleArr = articleStorage()
     console.log("1. articleArr", articleArr);
 
-
-    let currentPage = document.querySelector("#app").getAttribute("data-page")
 
     document.querySelectorAll(".articlewrapper").forEach(elm => {
         let articleElm = elm.firstElementChild
@@ -62,14 +62,16 @@ export default function articleSwipe() {
         elm.addEventListener("pointermove", (e) => {
             currentX = e.clientX
             movedX = (initX - currentX) / 16
-
-            if (movedX >= 6.5) {
-                // movedX = 6.5
-                articleBg.classList.add("selected")
-            }
             // console.log("move", movedX);
 
+
             articleElm.style.transform = "translateX(-" + movedX + "rem)"
+
+            if (movedX >= 6.5) {
+                articleBg.classList.add("selected")
+            } else {
+                articleBg.classList.remove("selected")
+            }
 
 
             let movedXpercent = Math.round((movedX / 6.5) * 100)
@@ -96,7 +98,6 @@ export default function articleSwipe() {
 
             articleBg.style.opacity = 0
             articleBg.classList.add("fadeout")
-            articleBg.classList.remove("selected")
 
 
             if (movedX >= 6.5) {
@@ -107,10 +108,8 @@ export default function articleSwipe() {
 
 
                 if (currentPage === "archive") {
-                    console.log("Removing article from storage");
-
-                    // console.log("storedIndex", storedIndex);
                     articleArr.splice(storedIndex, 1)
+                    console.log("Removing article from storage");
 
                     // console.log("articleArr", articleArr);
                     storage.stringifyTo("articleStorage", articleArr)
@@ -124,8 +123,8 @@ export default function articleSwipe() {
 
                 } else {
                     if (!isStored) {
-                        console.log("Adding article to storage");
                         articleArr.push(articleObj)
+                        console.log("Adding article to storage");
 
                         // console.log("A. articleArr", articleArr);
                         storage.stringifyTo("articleStorage", articleArr)
@@ -133,9 +132,8 @@ export default function articleSwipe() {
 
                         articleBgIcon.classList.add("icon--fill")
                     } else {
-                        console.log("Removing article from storage");
-                        console.log("B. storedIndex", storedIndex);
                         articleArr.splice(storedIndex, 1)
+                        console.log("Removing article from storage");
 
                         // console.log("B. articleArr", articleArr);
                         storage.stringifyTo("articleStorage", articleArr)

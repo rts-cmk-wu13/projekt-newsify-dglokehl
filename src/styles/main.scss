@@ -4,7 +4,6 @@
 .category {
     &__content {
         overflow: hidden;
-        transition: transform 200ms;
 
         &.hidden {
             display: none;
@@ -19,7 +18,7 @@
 
         position: relative;
 
-        border-top: solid 1px var.$mediumgrey;
+        border-top: solid 1px var.$border-color;
 
         color: var.$text-color;
 
@@ -51,7 +50,7 @@
 .articlewrapper {
     position: relative;
 
-    border-top: solid 1px var.$mediumgrey;
+    border-top: solid 1px var.$border-color;
 
     pointer-events: none;
     touch-action: none;
@@ -92,7 +91,7 @@
                 100% {
                     scale: 1;
                 }
-                35% {
+                25% {
                     scale: 1.5;
                 }
             }
