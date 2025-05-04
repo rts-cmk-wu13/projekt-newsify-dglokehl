@@ -1,18 +1,18 @@
 
 // ------ IMPORTS ------ //
 
-import "./styles/style.scss";
-import "./styles/settings.scss";
+import "../src/styles/style.scss";
+import "../src/styles/settings.scss";
 
 
-import * as storage from "./modules/storage.js";
-import onLoad, { checkDarkmode } from "./modules/utils/onLoad.js";
+import * as storage from "../src/modules/storage.js";
+import onLoad, { checkDarkmode } from "../src/modules/utils/onLoad.js";
 
-import { apiKey, newsifyUrl } from "./modules/variables.js";
-import categories from "./modules/categories.js";
+import { apiKey, newsifyUrl } from "../src/modules/variables.js";
+import categories from "../src/modules/categories.js";
 
 
-import { headerElm, footerElm } from "./views/listLayout.js";
+import { headerElm, footerElm } from "../src/views/listLayout.js";
 
 
 
@@ -35,7 +35,7 @@ let categoriesElms = categoriesList.map(category => {
     return `
         <li class="settings__list__item">
             <span class="settings__list__item__text headline">
-                <img src="./src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
+                <img src="/src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
                 ${categoryName}
             </span>
 

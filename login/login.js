@@ -1,14 +1,14 @@
 
 // ------ IMPORTS ------ //
 
-import "./styles/style.scss";
-import "./styles/login.scss";
+import "../src/styles/style.scss";
+import "../src/styles/login.scss";
 
 
-import * as storage from "./modules/storage.js";
-import onLoad from "./modules/utils/onLoad.js";
+import * as storage from "../src/modules/storage.js";
+import onLoad from "../src/modules/utils/onLoad.js";
 
-import { apiKey, newsifyUrl } from "./modules/variables.js";
+import { apiKey, newsifyUrl } from "../src/modules/variables.js";
 
 
 

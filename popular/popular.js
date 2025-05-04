@@ -1,24 +1,24 @@
 
 // ------ IMPORTS ------ //
 
-import "./styles/style.scss";
-import "./styles/main.scss";
+import "../src/styles/style.scss";
+import "../src/styles/main.scss";
 
 
-import * as storage from "./modules/storage.js";
-import onLoad from "./modules/utils/onLoad.js";
+import * as storage from "../src/modules/storage.js";
+import onLoad from "../src/modules/utils/onLoad.js";
 
-import { apiKey, newsifyUrl } from "./modules/variables.js";
-import categories from "./modules/categories.js";
-
-
-import listLayout from "./views/listLayout.js";
-import categoryElms from "./views/categoryElms.js";
+import { apiKey, newsifyUrl } from "../src/modules/variables.js";
+import categories from "../src/modules/categories.js";
 
 
-import categoryExpandCollapse from "./modules/articles/categoryExpandCollapse.js";
-import articleSwipe from "./modules/articles/articleSwipe.js";
-import articleSearch from "./modules/articles/articleSearch.js";
+import listLayout from "../src/views/listLayout.js";
+import categoryElms from "../src/views/categoryElms.js";
+
+
+import categoryExpandCollapse from "../src/modules/articles/categoryExpandCollapse.js";
+import articleSwipe from "../src/modules/articles/articleSwipe.js";
+import articleSearch from "../src/modules/articles/articleSearch.js";
 
 
 

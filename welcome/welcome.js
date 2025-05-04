@@ -1,17 +1,17 @@
 
 // ------ IMPORTS ------ //
 
-import "./styles/style.scss";
-import "./styles/welcome.scss";
+import "../src/styles/style.scss";
+import "../src/styles/welcome.scss";
 
 
-import * as storage from "./modules/storage.js";
-import onLoad, { checkDarkmode } from "./modules/utils/onLoad.js";
+import * as storage from "../src/modules/storage.js";
+import onLoad, { checkDarkmode } from "../src/modules/utils/onLoad.js";
 
-import { apiKey, newsifyUrl } from "./modules/variables.js";
+import { apiKey, newsifyUrl } from "../src/modules/variables.js";
 
 
-import gallerySwipe from "./modules/utils/gallerySwipe.js";
+import gallerySwipe from "../src/modules/utils/gallerySwipe.js";
 
 
 
@@ -35,17 +35,17 @@ function sliderLayout() {
 
     let gallerySlides = [
         {
-            "img": "./src/img/gallery1" + imgDarkLight + ".png",
+            "img": "/src/img/gallery1" + imgDarkLight + ".png",
             "heading": "Stay Connected, <br> Everywhere, Anytime",
             "text": "Welcome to Newsify, your ultimate destination for breaking news, exclusive stories, and tailored content.",
         },
         {
-            "img": "./src/img/gallery2" + imgDarkLight + ".png",
+            "img": "/src/img/gallery2" + imgDarkLight + ".png",
             "heading": "Become a Savvy <br> Global Citizen.",
             "text": "Discover tailored news that aligns with your interests and preferences. Your personalized news journey awaits!",
         },
         {
-            "img": "./src/img/gallery3" + imgDarkLight + ".png",
+            "img": "/src/img/gallery3" + imgDarkLight + ".png",
             "heading": "Enhance your News <br> Journey Now!",
             "text": "Be part of our dynamic community and contribute your insights and participate in enriching conversations.",
         },
@@ -55,7 +55,7 @@ function sliderLayout() {
     document.querySelector("#app").innerHTML = `
         <div class="splash">
             <div class="splash__logo">
-                <img src="./src/img/newsify_logo.svg" alt="Newsify logo" class="splash__img">
+                <img src="/src/img/newsify_logo.svg" alt="Newsify logo" class="splash__img">
                 <span class="splash__heading headline">Newsify</span>
             </div>
         </div>

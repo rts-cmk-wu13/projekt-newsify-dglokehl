@@ -19,7 +19,7 @@ export default function listLayout() {
 export function headerElm() {
     return `
         <header class="header">
-            <img src="./src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
+            <img src="/src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
             <h1 class="headline header__heading">Newsify</h1>
         </header>
     `
@@ -49,7 +49,7 @@ export function footerElm() {
                 </li>
 
                 <li class="menu__item">
-                    <a href="popular.html" class="${checkPage("popular")}">
+                    <a href="/popular/" class="${checkPage("popular")}">
                         <span class="material-symbols-rounded menu__link__icon icon">
                             kid_star
                         </span>
@@ -58,7 +58,7 @@ export function footerElm() {
                 </li>
 
                 <li class="menu__item">
-                    <a href="archive.html" class="${checkPage("archive")}">
+                    <a href="/archive/" class="${checkPage("archive")}">
                         <span class="material-symbols-rounded menu__link__icon icon">
                             bookmark
                         </span>
@@ -67,7 +67,7 @@ export function footerElm() {
                 </li>
 
                 <li class="menu__item">
-                    <a href="settings.html" class="${checkPage("settings")}">
+                    <a href="/settings/" class="${checkPage("settings")}">
                         <span class="material-symbols-rounded menu__link__icon icon">
                             settings
                         </span>
