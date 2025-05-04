@@ -167,3 +167,25 @@
         transition: transform 350ms ease-out;
     }
 }
+
+
+
+.archive__empty {
+    height: 100vh;
+    position: relative;
+
+    &__message {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        color: var.$text-color;
+        font-size: 0.9rem;
+        font-weight: 400;
+        text-align: center;
+
+        opacity: 0.6;
+    }
+}

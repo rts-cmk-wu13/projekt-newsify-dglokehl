@@ -2,13 +2,11 @@
 // ------ IMPORTS ------ //
 
 import "./styles/style.scss";
-import "./styles/welcome.scss";
+import "./styles/login.scss";
 
 
 import * as storage from "./modules/storage.js";
-
-import checkDarkmode from "./modules/checkDarkmode.js";
-import checkLogin from "./modules/checkLogin.js";
+import onLoad from "./modules/utils/onLoad.js";
 
 import { apiKey, newsifyUrl } from "./modules/variables.js";
 
@@ -16,8 +14,7 @@ import { apiKey, newsifyUrl } from "./modules/variables.js";
 
 // ------ INIT ------ //
 
-checkLogin()
-checkDarkmode()
+onLoad()
 
 
 
@@ -33,7 +30,7 @@ function loginLayout() {
     document.querySelector("#app").innerHTML = `
         <div class="login">
             <header class="login__text">
-                <img src="public/newsify_logo.svg" alt="" class="login__text__logo">
+                <img src="./src/img/newsify_logo.svg" alt="Newsify logo" class="login__text__logo">
                 <h1 class="login__text__heading headline">Newsify</h1>
 
                 <p class="login__text__intro">Welcome! Let's dive into your account!</p>

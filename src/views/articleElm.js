@@ -12,7 +12,7 @@ export default function articleElm(articleArr) {
         return `
             <div class="articlewrapper">
                 <a href="${article.url}" target="_blank" class="category__article" data-id="${article.id}" data-category="${article.category}">
-                    <img src="${article.thumb}" alt="" class="category__article__img">
+                    <img src="${article.thumb}" alt="Thumbnail: ${article.title}" class="category__article__img">
                     <div class="category__article__text">
                         <h3 class="headline category__article__text__heading">
                             ${article.title}

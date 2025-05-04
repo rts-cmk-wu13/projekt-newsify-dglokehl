@@ -1,4 +1,4 @@
-import * as storage from "./storage.js";
+import * as storage from "../storage.js";
 
 
 export default function articleStorage() {

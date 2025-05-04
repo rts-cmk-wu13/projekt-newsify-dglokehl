@@ -11,8 +11,9 @@ $red: #FF5D5D;
 $text-color: light-dark($darkgrey, $lightgrey);
 
 $bg-color: light-dark($white, #1F1F1F);
-$input-color: light-dark(#d9d9d950, #40404099);
 $border-color: light-dark($mediumgrey, $darkgrey);
+$input-color: light-dark(#d9d9d950, #40404099);
+$input-text-color: light-dark(#22222266, #C5C5C566);
 
 
 $headerHeight: 3.75rem;

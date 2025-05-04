@@ -6,11 +6,9 @@ import "./styles/main.scss";
 
 
 import * as storage from "./modules/storage.js";
+import onLoad from "./modules/utils/onLoad.js";
 
-import checkDarkmode from "./modules/checkDarkmode.js";
-import checkLogin from "./modules/checkLogin.js";
-
-import { apiKey } from "./modules/variables.js";
+import { apiKey, newsifyUrl } from "./modules/variables.js";
 import categories from "./modules/categories.js";
 
 
@@ -18,15 +16,15 @@ import listLayout from "./views/listLayout.js";
 import categoryElms from "./views/categoryElms.js";
 
 
-import categoryExpandCollapse from "./modules/categoryExpandCollapse.js";
-import articleSwipe from "./modules/articleSwipe.js";
+import categoryExpandCollapse from "./modules/articles/categoryExpandCollapse.js";
+import articleSwipe from "./modules/articles/articleSwipe.js";
+import articleSearch from "./modules/articles/articleSearch.js";
 
 
 
 // ------ INIT ------ //
 
-checkLogin()
-checkDarkmode();
+onLoad();
 
 
 let categoriesList = categories()
@@ -94,6 +92,7 @@ function newsFetch() {
 
             categoryExpandCollapse()
             articleSwipe()
+            articleSearch()
         });
 }
 newsFetch();

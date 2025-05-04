@@ -6,27 +6,24 @@ import "./styles/settings.scss";
 
 
 import * as storage from "./modules/storage.js";
+import onLoad, { checkDarkmode } from "./modules/utils/onLoad.js";
 
-import checkDarkmode from "./modules/checkDarkmode.js";
-import checkLogin from "./modules/checkLogin.js";
-
-import { apiKey } from "./modules/variables.js";
+import { apiKey, newsifyUrl } from "./modules/variables.js";
 import categories from "./modules/categories.js";
 
 
-import { headerElm, footerElm } from "./views/layoutElms.js";
-
-
+import { headerElm, footerElm } from "./views/listLayout.js";
 
 
 
 // ------ INIT ------ //
 
-checkLogin()
-checkDarkmode()
+onLoad()
 
 
 let categoriesList = categories()
+
+
 
 
 
@@ -38,7 +35,7 @@ let categoriesElms = categoriesList.map(category => {
     return `
         <li class="settings__list__item">
             <span class="settings__list__item__text headline">
-                <img src="./public/newsify_logo.svg" alt="" class="icon icon--logo">
+                <img src="./src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
                 ${categoryName}
             </span>
 
