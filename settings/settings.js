@@ -95,9 +95,10 @@ categorySwitches.forEach(switchElm => {
 });
 
 let darkmodeSwitch = document.querySelector(".darkmode__switch");
-if (JSON.parse(storage.readFrom("isDarkMode"))) {
+if (checkDarkmode()) {
     darkmodeSwitch.checked = true
 }
+
 darkmodeSwitch.addEventListener("change", function () {
     storage.saveTo("isDarkMode", darkmodeSwitch.checked);
     checkDarkmode()
