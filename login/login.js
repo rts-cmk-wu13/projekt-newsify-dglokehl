@@ -30,7 +30,7 @@ function loginLayout() {
     document.querySelector("#app").innerHTML = `
         <div class="login">
             <header class="login__text">
-                <img src="./src/img/newsify_logo.svg" alt="Newsify logo" class="login__text__logo">
+                <img src="/newsify_logo.svg" alt="Newsify logo" class="login__text__logo">
                 <h1 class="login__text__heading headline">Newsify</h1>
 
                 <p class="login__text__intro">Welcome! Let's dive into your account!</p>
@@ -52,13 +52,13 @@ function loginLayout() {
                     <span class="login__options__divider__line"></span>
                 </div>
 
-                <a href="login.html?login=login" class="btn btn--fill login__options__btn login__options__btn--password">
+                <a href="/login/index.html?login=login" class="btn btn--fill login__options__btn login__options__btn--password">
                     Sign in with password
                 </a>
             </div>
 
             <p class="login__signup">
-                Don't have an account? <a href="login.html?login=signup" class="login__signup__link">Sign up</a>
+                Don't have an account? <a href="/login/index.html?login=signup" class="login__signup__link">Sign up</a>
             </p>
         </div>
     `
@@ -87,7 +87,7 @@ function loginLayout() {
                 <div class="login__form__options">
                     <input type="submit" value="Sign in" class="btn btn--fill login__form__btn login__form__btn--submit">
 
-                    <a href="login.html" class="btn login__form__btn login__form__btn--back">
+                    <a href="/login/" class="btn login__form__btn login__form__btn--back">
                         Go back
                     </a>
                 </div>
@@ -100,7 +100,7 @@ function loginLayout() {
             document.querySelector(".login__form__btn--submit").value = "Sign up"
 
             document.querySelector(".login__signup").innerHTML = `
-                Already have an account? <a href="login.html?login=login" class="login__signup__link">Log in</a>
+                Already have an account? <a href="/login/index.html?login=login/" class="login__signup__link">Log in</a>
             `
         }
 
@@ -187,7 +187,7 @@ function loginLayout() {
                         "password": passwordInput,
                     }
                     storage.stringifyTo("userLogin", userLoginObj)
-                    window.location.href = newsifyUrl + "/login.html?login=login"
+                    window.location.href = newsifyUrl + "/login/"
                 }
             }
         });

@@ -115,6 +115,8 @@ main {
 
 body {
     background-color: var.$bg-color;
+
+    touch-action: pan-y, pinch-zoom;
 }
 
 

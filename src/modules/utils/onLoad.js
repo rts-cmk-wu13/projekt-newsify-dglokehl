@@ -50,7 +50,7 @@ export function checkLogin() {
         }
     } else {
         if (!isLoggedIn) {
-            window.location.href = newsifyUrl + "/welcome.html";
+            window.location.href = newsifyUrl + "/welcome/";
         }
     }
 }

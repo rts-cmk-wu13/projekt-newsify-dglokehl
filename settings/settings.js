@@ -35,7 +35,7 @@ let categoriesElms = categoriesList.map(category => {
     return `
         <li class="settings__list__item">
             <span class="settings__list__item__text headline">
-                <img src="/src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
+                <img src="/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
                 ${categoryName}
             </span>
 

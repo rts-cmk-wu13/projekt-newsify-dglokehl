@@ -16,5 +16,6 @@ export default defineConfig({
         welcome: resolve(__dirname, '/welcome/index.html'),
       },
     },
+    outDir: 'docs'
   },
 })

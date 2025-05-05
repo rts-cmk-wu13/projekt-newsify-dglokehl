@@ -31,7 +31,7 @@ export default function gallerySwipe(gallerySlides, sliderObj) {
             index++
             galleryChange()
         } else {
-            window.location.pathname = "/login.html";
+            window.location.pathname = "/login/";
         }
     })
 
@@ -63,7 +63,7 @@ export default function gallerySwipe(gallerySlides, sliderObj) {
                 index++
                 galleryChange()
             } else {
-                window.location.pathname = "/login.html";
+                window.location.pathname = "/login/";
             }
         } else if (movedX < -swipeLength && index > 0) {
             index--

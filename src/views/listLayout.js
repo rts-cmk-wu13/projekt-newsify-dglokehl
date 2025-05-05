@@ -1,3 +1,6 @@
+import { newsifyUrl } from "../modules/variables.js";
+
+
 export default function listLayout() {
     document.querySelector("#app").innerHTML = `
         ${headerElm()}
@@ -19,7 +22,7 @@ export default function listLayout() {
 export function headerElm() {
     return `
         <header class="header">
-            <img src="/src/img/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
+            <img src="/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
             <h1 class="headline header__heading">Newsify</h1>
         </header>
     `
@@ -40,7 +43,7 @@ export function footerElm() {
         <footer class="footer">
             <menu class="menu footer__menu">
                 <li class="menu__item">
-                    <a href="index.html" class="${checkPage("home")}">
+                    <a href="${newsifyUrl}" class="${checkPage("home")}">
                         <span class="material-symbols-rounded menu__link__icon icon">
                             home
                         </span>
