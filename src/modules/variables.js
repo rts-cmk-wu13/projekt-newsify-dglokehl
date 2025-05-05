@@ -1,6 +1,6 @@
 export let apiKey = "ASFng1GgWQKld7Syag5GVimYcJEHTzWQ"
 
-export let newsifyUrl = "https://newsify-test.netlify.app"
+export let newsifyUrl = "https://newsify-loke.netlify.app"
 // export let newsifyUrl = "http://localhost:5173"
 
 
