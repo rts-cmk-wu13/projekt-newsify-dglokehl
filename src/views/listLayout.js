@@ -25,17 +25,17 @@ export function headerElm() {
             <img src="/newsify_logo.svg" alt="Newsify logo" class="icon icon--logo">
             <h1 class="headline header__heading">Newsify</h1>
         </header>
-    `
+    `;
 }
 
 export function footerElm() {
-    let currentPage = document.querySelector("#app").getAttribute("data-page")
+    let currentPage = document.querySelector("#app").getAttribute("data-page");
 
     function checkPage(pageName) {
         if (currentPage === pageName) {
-            return "menu__link menu__link--active"
+            return "menu__link menu__link--active";
         } else {
-            return "menu__link"
+            return "menu__link";
         }
     }
 
@@ -79,5 +79,5 @@ export function footerElm() {
                 </li>
             </menu>
         </footer>
-    `
+    `;
 }

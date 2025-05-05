@@ -19,5 +19,5 @@ export default function categoryElms(categoryName, articleArr) {
                 ${articleElm(articleArr)}
             </div>
         </section>
-    `
+    `;
 }

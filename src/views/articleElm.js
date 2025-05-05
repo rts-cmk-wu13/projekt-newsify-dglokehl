@@ -1,11 +1,11 @@
 export default function articleElm(articleArr) {
-    let currentPage = document.querySelector("#app").getAttribute("data-page")
+    let currentPage = document.querySelector("#app").getAttribute("data-page");
 
-    let buttonType
+    let buttonType;
     if (currentPage === "archive") {
-        buttonType = "delete"
+        buttonType = "delete";
     } else {
-        buttonType = "bookmark"
+        buttonType = "bookmark";
     }
 
     return articleArr.map(article => {

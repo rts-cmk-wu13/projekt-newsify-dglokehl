@@ -27,9 +27,9 @@ import articleSearch from "./modules/articles/articleSearch.js";
 onLoad();
 
 
-let categoriesList = categories()
+let categoriesList = categories();
 
-listLayout()
+listLayout();
 
 
 
@@ -38,7 +38,7 @@ listLayout()
 // ------ FETCH ------ //
 
 function newsFetch() {
-    let fetchUrl = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`
+    let fetchUrl = `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apiKey}`;
 
     const fetchOptions = {
         method: 'GET',
@@ -51,27 +51,27 @@ function newsFetch() {
     fetch(fetchUrl, fetchOptions)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            let fetchResults = data.results
+            // console.log(data);
+            let fetchResults = data.results;
 
             const contentElm = document.querySelector(".content");
             contentElm.innerHTML += categoriesList.map(category => {
                 if (category.enabled) {
-                    let categoryName = category.display_name
+                    let categoryName = category.display_name;
 
                     let categoryArticles = fetchResults.filter((article) =>
                         article.section === categoryName || article.subsection === categoryName);
-                    let newsArticles = categoryArticles.filter((article) => 
+                    let newsArticles = categoryArticles.filter((article) =>
                         article.material_type_facet === "News"
                         && article.uri.length > 0
                         && article.url.length > 0
                         && article.multimedia.length > 0
                         && article.title.length > 0
                         && article.abstract.length > 0
-                    )
+                    );
 
                     if (newsArticles.length >= 1) {
-                        let articleObjArr = []
+                        let articleObjArr = [];
                         newsArticles.map(article => {
                             let articleObj = {
                                 "id": article.uri,
@@ -80,20 +80,20 @@ function newsFetch() {
                                 "title": article.title,
                                 "abstract": article.abstract,
                                 "category": categoryName,
-                            }
-                            articleObjArr.push(articleObj)
-                        }).join("")
+                            };
+                            articleObjArr.push(articleObj);
+                        }).join("");
 
-                        return categoryElms(categoryName, articleObjArr)
+                        return categoryElms(categoryName, articleObjArr);
                     }
-                    
+
                 }
-            }).join("")
+            }).join("");
 
 
-            categoryExpandCollapse()
-            articleSwipe()
-            articleSearch()
+            categoryExpandCollapse();
+            articleSwipe();
+            articleSearch();
         });
 }
 newsFetch();

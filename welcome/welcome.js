@@ -13,18 +13,18 @@ import { apiKey, newsifyUrl } from "../src/modules/variables.js";
 
 import gallerySwipe from "../src/modules/utils/gallerySwipe.js";
 
-import galleryImgDark1 from './img/gallery1-dark.png'
-import galleryImgDark2 from './img/gallery2-dark.png'
-import galleryImgDark3 from './img/gallery3-dark.png'
-import galleryImgLight1 from './img/gallery1-light.png'
-import galleryImgLight2 from './img/gallery2-light.png'
-import galleryImgLight3 from './img/gallery3-light.png'
+import galleryImgDark1 from './img/gallery1-dark.png';
+import galleryImgDark2 from './img/gallery2-dark.png';
+import galleryImgDark3 from './img/gallery3-dark.png';
+import galleryImgLight1 from './img/gallery1-light.png';
+import galleryImgLight2 from './img/gallery2-light.png';
+import galleryImgLight3 from './img/gallery3-light.png';
 
 
 
 // ------ INIT ------ //
 
-onLoad()
+onLoad();
 
 
 
@@ -33,17 +33,17 @@ onLoad()
 // ------ SLIDER LAYOUT ------ //
 
 function sliderLayout() {
-    let imgDarkLight1
-    let imgDarkLight2
-    let imgDarkLight3
+    let imgDarkLight1;
+    let imgDarkLight2;
+    let imgDarkLight3;
     if (checkDarkmode()) {
-        imgDarkLight1 = galleryImgDark1
-        imgDarkLight2 = galleryImgDark2
-        imgDarkLight3 = galleryImgDark3
+        imgDarkLight1 = galleryImgDark1;
+        imgDarkLight2 = galleryImgDark2;
+        imgDarkLight3 = galleryImgDark3;
     } else {
-        imgDarkLight1 = galleryImgLight1
-        imgDarkLight2 = galleryImgLight2
-        imgDarkLight3 = galleryImgLight3
+        imgDarkLight1 = galleryImgLight1;
+        imgDarkLight2 = galleryImgLight2;
+        imgDarkLight3 = galleryImgLight3;
     }
 
     let gallerySlides = [
@@ -62,7 +62,7 @@ function sliderLayout() {
             "heading": "Enhance your News <br> Journey Now!",
             "text": "Be part of our dynamic community and contribute your insights and participate in enriching conversations.",
         },
-    ]
+    ];
 
 
     document.querySelector("#app").innerHTML = `
@@ -96,11 +96,11 @@ function sliderLayout() {
                 </span>
             </div>
         </div>
-    `
+    `;
 
     setTimeout(() => {
-        document.querySelector(".splash").style.display = "none"
-    }, 1200)
+        document.querySelector(".splash").style.display = "none";
+    }, 1200);
 
 
 
@@ -109,10 +109,10 @@ function sliderLayout() {
         "img": document.querySelector(".slider__gallery__img"),
         "heading": document.querySelector(".slider__heading"),
         "text": document.querySelector(".slider__text"),
-    }
+    };
 
-    gallerySwipe(gallerySlides, sliderObj)
+    gallerySwipe(gallerySlides, sliderObj);
 }
 
 
-sliderLayout()
+sliderLayout();

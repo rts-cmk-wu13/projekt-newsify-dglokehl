@@ -203,17 +203,16 @@ export default function categories() {
             "section": "your money",
             "display_name": "Your Money",
         }
-    ]
+    ];
 
     categoriesDefault.forEach(category => {
-        category.enabled = true
+        category.enabled = true;
     });
-    console.log(categoriesDefault);
 
 
     if (storage.parseFrom("categories") === null) {
-        storage.stringifyTo("categories", categoriesDefault)
+        storage.stringifyTo("categories", categoriesDefault);
     }
 
-    return storage.parseFrom("categories")
+    return storage.parseFrom("categories");
 }

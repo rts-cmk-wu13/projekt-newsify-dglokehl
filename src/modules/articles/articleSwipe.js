@@ -5,28 +5,28 @@ import articleAddRemove from "./articleAddRemove.js";
 
 
 export default function articleSwipe() {
-    let initX
-    let currentX
-    let movedX
+    let initX;
+    let currentX;
+    let movedX;
 
 
-    let currentPage = document.querySelector("#app").getAttribute("data-page")
+    let currentPage = document.querySelector("#app").getAttribute("data-page");
 
-    let articleArr = articleStorage()
-    console.log("1. articleArr", articleArr);
+    let articleArr = articleStorage();
+    // console.log("1. articleArr", articleArr);
 
 
     document.querySelectorAll(".articlewrapper").forEach(wrapperElm => {
-        let articleElm = wrapperElm.querySelector(".category__article")
-        let articleBg = wrapperElm.querySelector(".articlewrapper__bg")
-        let articleBgIcon = wrapperElm.querySelector(".articlewrapper__icon")
+        let articleElm = wrapperElm.querySelector(".category__article");
+        let articleBg = wrapperElm.querySelector(".articlewrapper__bg");
+        let articleBgIcon = wrapperElm.querySelector(".articlewrapper__icon");
 
         let elmObj = {
             "wrapperElm": wrapperElm,
             "articleElm": articleElm,
             "articleBg": articleBg,
             "articleBgIcon": articleBgIcon,
-        }
+        };
 
 
         let articleObj = {
@@ -36,17 +36,16 @@ export default function articleSwipe() {
             "title": articleElm.querySelector(".category__article__text__heading").innerText,
             "abstract": articleElm.querySelector(".category__article__text__subheading").innerText,
             "category": articleElm.getAttribute("data-category"),
-        }
-        // console.log(articleObj);
+        };
 
 
 
         // ------ STORAGE ------ //
 
         let isStored = articleArr.some((article) =>
-            article.id === articleObj.id)
+            article.id === articleObj.id);
         if (isStored && currentPage !== "archive") {
-            articleBgIcon.classList.add("icon--fill")
+            articleBgIcon.classList.add("icon--fill");
         }
 
 
@@ -54,61 +53,61 @@ export default function articleSwipe() {
         // ------ START ------ //
 
         wrapperElm.addEventListener("pointerdown", (e) => {
-            initX = e.clientX
-            console.log("down", initX);
+            initX = e.clientX;
+            // console.log("down", initX);
 
-            articleElm.classList.remove("animation")
-            articleBg.classList.remove("fadeout", "selected")
-        })
+            articleElm.classList.remove("animation");
+            articleBg.classList.remove("fadeout", "selected");
+        });
 
 
 
         // ------ MOVE ------ //
 
         wrapperElm.addEventListener("pointermove", (e) => {
-            currentX = e.clientX
-            movedX = (initX - currentX) / 16
+            currentX = e.clientX;
+            movedX = (initX - currentX) / 16;
             // console.log("move", movedX);
 
 
-            articleElm.style.transform = "translateX(-" + movedX + "rem)"
+            articleElm.style.transform = "translateX(-" + movedX + "rem)";
 
             if (movedX >= 6.5) {
-                articleBg.classList.add("selected")
+                articleBg.classList.add("selected");
             } else {
-                articleBg.classList.remove("selected")
+                articleBg.classList.remove("selected");
             }
 
 
-            let movedXpercent = Math.round((movedX / 6.5) * 100)
+            let movedXpercent = Math.round((movedX / 6.5) * 100);
             if (movedXpercent >= 100) {
-                movedXpercent = 100
+                movedXpercent = 100;
             }
             // console.log("percentage", movedXpercent);
 
-            articleBg.style.opacity = movedXpercent + "%"
-            articleBgIcon.style.scale = movedXpercent + "%"
-        })
+            articleBg.style.opacity = movedXpercent + "%";
+            articleBgIcon.style.scale = movedXpercent + "%";
+        });
 
 
 
         // ------ END ------ //
 
         wrapperElm.addEventListener("pointerup", (e) => {
-            console.log("up", movedX);
-            initX = undefined
+            // console.log("up", movedX);
+            initX = undefined;
 
 
-            articleElm.style.transform = "translateX(0px)"
-            articleElm.classList.add("animation")
+            articleElm.style.transform = "translateX(0px)";
+            articleElm.classList.add("animation");
 
-            articleBg.style.opacity = 0
-            articleBg.classList.add("fadeout")
+            articleBg.style.opacity = 0;
+            articleBg.classList.add("fadeout");
 
 
             if (movedX >= 6.5) {
-                articleAddRemove(articleObj, elmObj)
+                articleAddRemove(articleObj, elmObj);
             }
-        })
+        });
     });
 }

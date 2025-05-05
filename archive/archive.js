@@ -40,14 +40,13 @@ listLayout();
 // ------ FETCH ------ //
 
 function newsFetch() {
-    let articleArr = articleStorage()
-    console.log(articleArr.length);
+    let articleArr = articleStorage();
     if (articleArr.length == 0) {
         document.querySelector("main").outerHTML = `
             <main class="archive__empty">
                 <p class="archive__empty__message">You haven't archived any articles yet.</p>
             </main>
-        `
+        `;
     }
     // console.log("articleArr", articleArr);
 
@@ -57,22 +56,22 @@ function newsFetch() {
             let categoryName = category.display_name;
 
             let isStored = articleArr.some((article) =>
-                article.category === categoryName)
+                article.category === categoryName);
             // console.log(categoryName, isStored);
             if (isStored) {
                 // console.log(categoryName);
-                
+
                 let categoryArticles = articleArr.filter((article) =>
                     article.category === categoryName);
-    
+
                 return categoryElms(categoryName, categoryArticles);
             }
         }
-        
+
     }).join("");
 
-    categoryExpandCollapse()
-    articleSwipe()
-    articleSearch()
+    categoryExpandCollapse();
+    articleSwipe();
+    articleSearch();
 }
 newsFetch();

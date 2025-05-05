@@ -5,10 +5,10 @@ import articleElm from "../../views/articleElm.js";
 
 export default function articleSearch() {
     const contentElm = document.querySelector(".content");
-    let contentElmClone = contentElm.cloneNode(true)
+    let contentElmClone = contentElm.cloneNode(true);
 
 
-    let initArticles = []
+    let initArticles = [];
     document.querySelectorAll(".category__article").forEach(article => {
         let articleObj = {
             "id": article.getAttribute("data-id"),
@@ -17,31 +17,29 @@ export default function articleSearch() {
             "title": article.querySelector(".category__article__text__heading").innerText,
             "abstract": article.querySelector(".category__article__text__subheading").innerText,
             "category": article.getAttribute("data-category"),
-        }
-        initArticles.push(articleObj)
+        };
+        initArticles.push(articleObj);
     });
-    storage.stringifyTo("pageArticles", initArticles)
+    storage.stringifyTo("pageArticles", initArticles);
 
 
 
     let searchBar = document.querySelector(".search__bar");
 
     searchBar.addEventListener("input", (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        let searchQuery = searchBar.value.toLowerCase()
-        console.log(searchQuery);
+        let searchQuery = searchBar.value.toLowerCase();
 
-        let pageArticles = storage.parseFrom("pageArticles")
+        let pageArticles = storage.parseFrom("pageArticles");
 
         if (searchQuery.length > 0) {
             let filteredArticles = pageArticles.filter((article) =>
-                article.title.toLowerCase().includes(searchQuery) || article.abstract.toLowerCase().includes(searchQuery))
-            console.log(filteredArticles);
+                article.title.toLowerCase().includes(searchQuery) || article.abstract.toLowerCase().includes(searchQuery));
 
-            contentElm.innerHTML = articleElm(filteredArticles)
+            contentElm.innerHTML = articleElm(filteredArticles);
         } else {
-            contentElm.innerHTML = contentElmClone.innerHTML
+            contentElm.innerHTML = contentElmClone.innerHTML;
         }
-    })
+    });
 }

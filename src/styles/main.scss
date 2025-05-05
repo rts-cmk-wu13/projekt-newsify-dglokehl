@@ -98,8 +98,6 @@
     }
 
     &__icon {
-        // width: var.$articleHeight;
-
         display: flex;
         justify-content: center;
         align-items: center;
@@ -120,7 +118,6 @@
 }
 
 .category__article {
-    // height: var.$articleHeight;
     height: 100%;
 
     display: flex;
@@ -130,12 +127,12 @@
     position: relative;
     z-index: 1;
 
+    box-shadow: 0 0 10px #00000060;
     background-color: var.$bg-color;
 
     pointer-events: auto;
     overflow: hidden;
     transform: translateX(0px);
-    // transition: transform 200ms;
 
     padding: 1rem 1.5rem;
 

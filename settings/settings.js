@@ -18,10 +18,10 @@ import { headerElm, footerElm } from "../src/views/listLayout.js";
 
 // ------ INIT ------ //
 
-onLoad()
+onLoad();
 
 
-let categoriesList = categories()
+let categoriesList = categories();
 
 
 
@@ -30,7 +30,7 @@ let categoriesList = categories()
 // ------ LAYOUT ------ //
 
 let categoriesElms = categoriesList.map(category => {
-    let categoryName = category.display_name
+    let categoryName = category.display_name;
 
     return `
         <li class="settings__list__item">
@@ -45,8 +45,8 @@ let categoriesElms = categoriesList.map(category => {
                 <span class="settings__list__item__option__bg"></span>
             </label>
         </li>
-    `
-}).join("")
+    `;
+}).join("");
 
 
 document.querySelector("#app").innerHTML = `
@@ -77,29 +77,29 @@ document.querySelector("#app").innerHTML = `
 
 // --- SWITCHES --- //
 
-let categorySwitches = document.querySelectorAll(".settings__list__item__option__switch")
+let categorySwitches = document.querySelectorAll(".settings__list__item__option__switch");
 categorySwitches.forEach(switchElm => {
-    let switchElmCategory = switchElm.getAttribute("data-category")
-    let findElm = categoriesList.find(elm => elm.display_name === switchElmCategory)
+    let switchElmCategory = switchElm.getAttribute("data-category");
+    let findElm = categoriesList.find(elm => elm.display_name === switchElmCategory);
 
     switchElm.addEventListener("change", () => {
-        findElm.enabled = switchElm.checked
-        storage.saveTo("categories", JSON.stringify(categoriesList))
-    })
+        findElm.enabled = switchElm.checked;
+        storage.saveTo("categories", JSON.stringify(categoriesList));
+    });
 
     if (findElm.enabled) {
-        switchElm.checked = true
+        switchElm.checked = true;
     } else {
-        switchElm.checked = false
+        switchElm.checked = false;
     }
 });
 
 let darkmodeSwitch = document.querySelector(".darkmode__switch");
 if (checkDarkmode()) {
-    darkmodeSwitch.checked = true
+    darkmodeSwitch.checked = true;
 }
 
 darkmodeSwitch.addEventListener("change", function () {
     storage.saveTo("isDarkMode", darkmodeSwitch.checked);
-    checkDarkmode()
+    checkDarkmode();
 });
