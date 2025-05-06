@@ -1,0 +1,116 @@
+@use './placeholders/var';
+
+
+.splash {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+
+    background-color: var.$bg-color;
+
+    opacity: 0;
+    animation-duration: 1200ms;
+    animation-name: splashAnim;
+    animation-timing-function: ease-out;
+    @keyframes splashAnim {
+        0%,
+        60% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    &__img {
+        width: 10.75rem;
+    }
+
+    &__heading {
+        font-size: 3rem;
+        font-weight: 900;
+        text-align: center;
+
+        margin-top: 1.75rem;
+    }
+
+    &__logo {
+        animation-duration: 1200ms;
+        animation-name: logoAnim;
+        animation-timing-function: ease-out;
+        @keyframes logoAnim {
+            0% {
+                scale: 0.5;
+            }
+            100% {
+                scale: 1;
+            }
+        }
+    }
+}
+
+
+.slider {
+    background-color: var.$bg-color;
+
+
+    &__heading {
+        font-size: 2rem;
+        font-weight: 900;
+        text-align: center;
+
+        margin-top: 0.5rem;
+    }
+
+    &__text {
+        color: var.$text-color;
+    
+        font-size: 1.125rem;
+        font-weight: 400;
+        text-align: center;
+    
+        padding: 0 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    &__carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        margin-top: 3rem;
+
+        .indicator {
+            width: 1rem;
+            height: 1rem;
+
+            border-radius: 100px;
+            background-color: var.$mediumgrey;
+
+            cursor: pointer;
+            transition: all 350ms;
+
+            &--current {
+                width: 4.125rem;
+                background-color: var.$green;
+            }
+        }
+    }
+
+    &__btn__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+
+        padding: 0 1.25rem;
+        margin-top: 3.25rem;
+        margin-bottom: 1.25rem;
+    }
+}
